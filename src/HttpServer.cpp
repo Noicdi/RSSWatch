@@ -35,7 +35,7 @@ HttpServer::HttpServer(const std::string& addr, const uint16_t port)
       http_server_{evhttp_new(loop_->get())}
 {
     evhttp_bind_socket(http_server_, addr_.c_str(), port_);
-    spdlog::debug("Http Server listening {}:{}", addr_, port_);
+    spdlog::info("Http Server listening {}:{}", addr_, port_);
 
     evhttp_set_gencb(http_server_, httpRequestHandle, nullptr);
 }
@@ -60,7 +60,7 @@ void HttpServer::httpRequestHandle(struct evhttp_request* req, void* arg)
                                                            evhttp_uri_free);
     auto http_request_path = evhttp_uri_get_path(request_decode.get());
 
-    spdlog::info("Http request: {} {}", getHttpRequestMethod(request_method), http_request_path);
+    spdlog::debug("Http request: {} {}", getHttpRequestMethod(request_method), http_request_path);
 
     auto request_headers = evhttp_request_get_input_headers(req);
     std::map<std::string, std::string> header_map;

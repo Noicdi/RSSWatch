@@ -8,7 +8,9 @@
 struct Config
 {
     // log
-    spdlog::level::level_enum level;
+    spdlog::level::level_enum log_level;
+    bool log_console;
+    std::string log_path;
 
     // http
     std::string addr;
@@ -16,5 +18,7 @@ struct Config
 };
 
 Config getConfig();
+
+void setLogConfig(Config& config);
 
 #endif  // RSSWATCH_INCLUDE_CONFIG_

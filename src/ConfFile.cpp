@@ -122,6 +122,11 @@ bool ConfFile::getParameterBool(const std::string& section,
         result_string = getParameterString(section, parameter_key, "false");
     }
 
+    if (result_string != "true" && result_string != "false")
+    {
+        result_string = "false";
+    }
+
     if (result_string == "false")
     {
         return false;

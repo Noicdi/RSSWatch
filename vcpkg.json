@@ -2,7 +2,7 @@
   "name": "rsswatch",
   "version": "0.0.1",
   "dependencies": [
-    "libevent",
-    "spdlog"
+    "spdlog",
+    "libevent"
   ]
 }

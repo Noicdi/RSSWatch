@@ -3,11 +3,11 @@
 
 int main()
 {
-    auto conf = getConfig();
+    auto config = getConfig();
 
-    spdlog::set_level(conf.level);
+    setLogConfig(config);
 
-    HttpServer server(conf.addr, conf.port);
+    HttpServer server(config.addr, config.port);
     server.run();
 
     return 0;
